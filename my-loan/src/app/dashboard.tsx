@@ -1,10 +1,11 @@
-'use client'
-import React from 'react';
-import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 
 const Dashboard = () => {
-  const { data: session } = useSession();
+  // Static user data for UI demonstration
+  const user = {
+    name: "Hellena Akumu",
+    email: "hellena@example.com"
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -18,7 +19,7 @@ const Dashboard = () => {
             <Link href="/loans" className="text-gray-700 hover:text-blue-600">Loans</Link>
           </div>
           <div className="flex items-center space-x-4">
-            <span className="text-gray-700">Welcome, {session?.user?.name || 'User'}</span>
+            <span className="text-gray-700">Welcome, {user.name}</span>
             <button className="text-gray-700 hover:text-blue-600">Logout</button>
           </div>
         </div>
@@ -27,7 +28,7 @@ const Dashboard = () => {
       {/* Dashboard Content */}
       <main className="container mx-auto py-8 px-4">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">Dashboard</h2>
-        <p className="text-lg text-gray-600 mb-8">Welcome back, {session?.user?.name || 'Hellena Akumu'}</p>
+        <p className="text-lg text-gray-600 mb-8">Welcome back, {user.name}</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {/* Total Savings Card */}
@@ -83,14 +84,6 @@ const Dashboard = () => {
             <div className="border-b pb-4">
               <p className="text-gray-500">No recent activity</p>
             </div>
-            {/* Sample activity item would go here */}
-            {/* <div className="flex justify-between items-center border-b pb-4">
-              <div>
-                <p className="font-medium">Deposit made</p>
-                <p className="text-sm text-gray-500">Today at 10:30 AM</p>
-              </div>
-              <p className="text-green-600 font-medium">+ Ksh 1,000</p>
-            </div> */}
           </div>
         </div>
       </main>
@@ -106,7 +99,7 @@ const Dashboard = () => {
           </Link>
           <Link href="/deposits" className="flex flex-col items-center text-gray-600">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinecap="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <path strokeLinecap="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <span className="text-xs mt-1">Deposits</span>
           </Link>
