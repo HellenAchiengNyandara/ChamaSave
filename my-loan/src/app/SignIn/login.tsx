@@ -1,34 +1,61 @@
-import { FormEvent } from 'react'
-import { useRouter } from 'next/router'
- 
-export default function Login() {
-  const router = useRouter()
- 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
- 
-    const formData = new FormData(event.currentTarget)
-    const email = formData.get('email')
-    const password = formData.get('password')
- 
-    const response = await fetch('/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    })
- 
-    if (response.ok) {
-      router.push('/profile')
-    } else {
-      // Handle errors
-    }
-  }
- 
+import React from 'react';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+
+const Login= () => {
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="email" name="email" placeholder="Email" required />
-      <input type="password" name="password" placeholder="Password" required />
-      <button type="submit">Login</button>
-    </form>
-  )
-}
+    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
+      <h1 className="text-2xl font-bold text-center mb-6">Login to your Account</h1>
+      
+      <form className="space-y-4">
+        
+      
+
+        <div>
+          <label className="block text-sm font-medium mb-1" htmlFor="email">
+            Email Address
+          </label>
+          <Input
+            id="email"
+            type="email"
+            placeholder="john@example.com"
+            className="w-full"
+            required
+          />
+        </div>
+
+        
+        <div>
+          <label className="block text-sm font-medium mb-1" htmlFor="password">
+            Password
+          </label>
+          <Input
+            id="password"
+            type="password"
+            placeholder="••••••••"
+            className="w-full"
+            required
+            minLength={8}
+          />
+        </div>
+
+        
+
+        <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
+          Login
+        </Button>
+        
+
+      </form>
+
+      <p className="mt-4 text-center text-sm text-gray-600">
+        Don&apos;t have an account?{' '}
+        <a href="/New" className="text-blue-600 hover:underline">
+          Sign Up
+        </a>
+      </p>
+    </div>
+  );
+};
+
+export default Login;

@@ -15,7 +15,7 @@ const Dashboard = () => {
           <h1 className="text-xl font-bold text-blue-600">Loan System</h1>
           <div className="hidden md:flex space-x-6">
             <Link href="/" className="text-gray-700 hover:text-blue-600">Home</Link>
-            <Link href="/about" className="text-gray-700 hover:text-blue-600">About Us</Link>
+            <Link href="/aboutPage" className="text-gray-700 hover:text-blue-600">About Us</Link>
             <Link href="/loans" className="text-gray-700 hover:text-blue-600">Loans</Link>
           </div>
           <div className="flex items-center space-x-4">
